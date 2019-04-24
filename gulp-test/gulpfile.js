@@ -1,6 +1,9 @@
 const gulp  = require('gulp');
 const sass  = require('gulp-sass');
 const browserSync = require('browser-sync').create();
+const minifyCSS = require('gulp-clean-css');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
 
 var SCSS_SRC = './SCSS/*.scss'; // *: looks for any files with .scss in that dir
 var SCSS_DEST = './CSS';
@@ -10,11 +13,10 @@ var JS_DEST = './src/**/*.js';
 function style(){
     // 1. Where is SCSS file?
     return gulp.src(SCSS_SRC)
-    // 2. Pass file through sass compiler
         .pipe(sass().on('error', sass.logError))
-    // 3. Where to save generated CSS
+        .pipe(minifyCSS())
+        .pipe(rename({ suffix: '.min'}))
         .pipe(gulp.dest(SCSS_DEST))
-    // 4. Stream all changes to browser 
         .pipe(browserSync.stream());
 }
 
@@ -31,3 +33,4 @@ function watch(){
 
 exports.style = style;
 exports.watch = watch;
+exports.default = watch;
