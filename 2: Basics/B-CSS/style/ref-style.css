@@ -1,5 +1,22 @@
+@import 'otherCSS.css';
+
+/*
+@ rules apply to certain media and metadata
+
+Nested statements (if the media exceeds 40 pixels):
+@media (min-width: 40px) { 
+    body {
+        margin: 0 auto;
+        width: 10px;
+    }
+}
+*/
+a {
+    color: blue;
+}
 p {
     color: red;
+    padding: 10px 12px 13px 11px; /* Short-hand: top right bottom left */
 }
 
 h1 { /* this is a tag selector */
@@ -50,4 +67,32 @@ li {
 [lang|="en"] { /* If the language is English */
     font-weight: bold;
 }
+
+/* Pseudo Classes: specify style when an element is in a certain state */
+a:visited { /* When the user has visited the site already, it changes to purple */
+    color: purple;
+}
+
+a:hover,
+a:active,
+a:active {
+    color: darkred;
+    font-weight: bold;
+}
+
+/* Pseudo Elements: like classes but uses "::" instead */
+/* elements with an attribute "href" with values
+   starting with "http" will have an arrow added after their
+   content (to indicate they are external links) */
+[href^=http]::after {
+    content: '⤴';
+}
+
+p::first-letter { /* This styles the first letter of the paragraph*/
+    font-size: 3em;
+    border: 1px solid black;
+    background: red;
+  }
+
+
 /*---------------Make a basic blog when finished CSS------------*/
