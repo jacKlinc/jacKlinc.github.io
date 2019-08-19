@@ -95,4 +95,50 @@ p::first-letter { /* This styles the first letter of the paragraph*/
   }
 
 
+/* Combinators & Selector Lists*/
+table { /* basic table selection*/
+    font: 2em sans-serif;
+    border-spacing: 1;
+}
+
+table td, table th { /* selects all <td> and <ts> within a table */
+    border: 1px solid black;
+    padding: 0.4em 0.3em 0.5em;
+}
+
+table tbody td + td { /* All <td>s preceded by another <td>, within a <tbody> in a table */
+    text-align: center;
+}
+table tbody td:last-child { /* All <td> that are a last child, in a <tbody> in a table */
+    text-align: right;
+}
+
+/* All <th>s, within a <tfoot>s, within a <table> */
+table tfoot th {
+    text-align: right;
+    border-top-width: 5px;
+    border-left: none;
+    border-bottom: none;
+}
+
+table thead th {
+    color: white;
+    background: black;
+}
+
+/* All <td>s preceded by a <th>, within a <table> */
+table th + td {
+    text-align: right;
+    border-top-width: 5px;
+    color: white;
+    background: black;
+}
+
+/* All pseudo-elements "after" <td>s that are a last child,
+    appearing within elements with the class "with-currency" that
+    also have an attribute "lang" with the value "fr" */
+.with-currency[lang="en-GB"] td:last-child::after {
+    content: ' €';
+}
+
 /*---------------Make a basic blog when finished CSS------------*/
