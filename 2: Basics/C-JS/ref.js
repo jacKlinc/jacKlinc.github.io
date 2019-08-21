@@ -43,3 +43,29 @@ switch (option) {
         console.log("This is case 2");
 }   
 
+var num = 99;
+
+while (num >= 0) {
+    console.log(num + "bottles of juice on the wall! " + num + " bottles of juice! Take one down, pass it around... " + (num - 1) + " bottles of juice on the wall!");
+    num--;
+}
+
+// ****** Functions ****** 
+// Shadowing / Scope Override: identical variable names from different scopes
+var x = 1;
+function addTwo() {
+    x = x + 2;
+}
+addTwo();
+x = x + 1; // The last used value of x is used
+console.log(x); // even if its not in the right scope
+
+// Function Expressions: when a function is stored in a variable
+var func = function(par) {
+    return par;
+}
+
+var func = function ted(ip){
+    return ip;
+}
+func(); // call the variable name not the function name (ref error)
