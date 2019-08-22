@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <h1>
+            Wow
+        </h1>
+        <div class="my-div">
+            hellow
+        </div>
+
+        <button class="panel-button" panel-id="panel1">Button 1</button>
+        <button class="panel-button" panel-id="panel2">Button 2</button>
+        <button class="panel-button" panel-id="panel3">Button 3</button>
+
+        <ul class="unordered-list">
+            <li>one</li>
+            <li>two</li>
+            <li>three
+                <ul class="sub-list">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="panel-body">content</div>
+        
+        <script>
+
+            $(document).ready(function(){
+                
+                // ***** Methods
+                $('h1').fadeToggle(500).fadeToggle(400);
+                
+                $('.my-div').css({  // this acts like CSS
+                    color: 'red',   // needs to be in quotes
+                    fontWeight: 'bold', // jQuery knows font-weight as this
+                    opacity: '0.5'
+                });
+                
+                $('#btn1').html('my button <strong>bold</strong>'); // this 
+
+                // ***** Events
+                $('#btn2').on('mouseover', function(){ // when button 2 is clicked
+                    $('.my-div').fadeToggle(250); // toggle this element
+                });
+
+                // Attributes
+                $('button[button-panel=panel1]') // finds buttons with that attr
+
+                // *****  DRY: Don't Repeat Yourself
+                $('.panel-button').on('click', function(){ // listens to all panel-buttons
+                    $('.my-div').toggle(250); // toggle this element
+                });
+                
+
+                var content = "My new content"
+                $('.panel-button').on('click', function(){ // listens to all panel-buttons
+                    var panelId = $(this).attr('panel-id');
+                    $('#' + panelId).toggle(); // finds the panel id and toggles it 
+                    $('#' + panelId + '.panel-body').html(content); // changes html element
+                });
+
+                // **** DOM Traversal
+                
+
+            });
+
+        </script>
+    </body>
+</html>
